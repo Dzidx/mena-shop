@@ -1,17 +1,58 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
 <html>
-<head>
-    <title>Mena Shop</title>
+    <style>
+        body {
+            font-family: 'Gill Sans', 'Gill Sans MT', sans-serif;
+            margin: 5px;
+            padding: 0px;
+            background-color: #212324;
+            color : white;
+        }
+        header {
+            padding: 12px;
+            margin: 0px;
+            text-align: center;
+            background-color: #171718;
+            color : white;
+        }
+    </style>
+
+
 </head>
 <body>
-    <h1>Mena Shop</h1>
-    <p>ini baru temporary, nanti akan dibagusin</p>
-</body>
-</html>
+    <header>
+        <h1>{{ app_name }}</h1>
+        <p>{{ name }} - {{ class }}</p>
+    </header>
 
-<h5>NPM: </h5>
-<p>{{ npm }}</p>
-<h5>Name: </h5>
-<p>{{ name }}<p>
-<h5>Class: </h5>
-<p>{{ class }}</p>
+    <a href="{% url 'main:create_product' %}">
+  <button>+ Add Product</button>
+    </a>
+
+    <hr>
+
+    {% if not product_list %}
+    <p>Belum ada barang yang dijual</p>
+    {% else %}
+
+    {% for product in product_list %}
+    <div>
+        <h2><a href="{% url 'main:show_product' product.id %}">{{ product.name }}</a></h2>
+
+        <p><b>{{ product.category }}</b> | <b>{{ product.price }}</b></p>
+
+        {% if product.thumbnail %}
+        <img src="{{ product.thumbnail }}" alt="thumbnail" width="150" height="100">
+        <br />
+        {% endif %}
+        <p>{{ product.description|truncatewords:20 }}</p>
+
+        <p><a href="{% url 'main:show_product' product.id %}"><button>Details</button></a></p>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+</body>
+</html>         
+{% endblock content %}
