@@ -116,5 +116,15 @@ Method ini digunakan oleh Django untuk menvalidasi data yang dikirim lewat form,
     - Menambahkan fungsi `show_json` dan `show_json_by_id` pada `views.py`
     - Menambahkan path untuk fungsi-fungsi tersebut pada `urls.py`
 
+## Screenshot Postman
+- show_xml
+  <img width="1944" height="1207" alt="Screenshot 2025-09-17 100119" src="https://github.com/user-attachments/assets/f5872b52-10fc-4a66-a1cf-2778a1b65027" />
+- show_xml_by_id
+  <img width="1984" height="1220" alt="Screenshot 2025-09-17 100331" src="https://github.com/user-attachments/assets/60a79d41-07fa-4bc8-9fc8-d313a1653026" />
+- show_json
+  <img width="1986" height="1222" alt="Screenshot 2025-09-17 100149" src="https://github.com/user-attachments/assets/c9309b7c-b620-413e-90a5-c6974f4c7681" />
+- show_json_by_id
+  <img width="1982" height="1220" alt="Screenshot 2025-09-17 100417" src="https://github.com/user-attachments/assets/740e1343-d925-48db-b5a4-9aec85d32e22" />
+
 ## Feedback Asdos Tutorial 2
 Asdos sangat membantu dengan masalah-masalah yang terjadi ketika kita mengerjakan tutorial.
