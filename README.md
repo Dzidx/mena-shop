@@ -128,3 +128,68 @@ Method ini digunakan oleh Django untuk menvalidasi data yang dikirim lewat form,
 
 ## Feedback Asdos Tutorial 2
 Asdos sangat membantu dengan masalah-masalah yang terjadi ketika kita mengerjakan tutorial.
+
+
+
+---
+# Tugas 4
+
+## Apa itu Django AuthenticationForm?
+`AuthenticationForm` adalah form bawaan Django yang digunakan untuk login user.
+
+Kelebihan:
+    - Terintegrasi dengan sistem autentifikasi Django
+    - Otomatis validasi username dan password
+    - Mudah dipakai
+
+Kelemahan:
+    - Terbatas sehingga perlu kustomisasi jika ingin login dengan multi-field
+    - Tampilan sederhana, sehingga perlu template override
+
+## Perbedaan autentikasi dan otorisasi, bagaiamana Django mengimplementasikan kedua konsep tersebut
+    - Autentikasi = proses memastikan identitas user (siapa yang login).
+    - Otorisasi = proses memastikan user punya hak untuk melakukan aksi tertentu.
+
+Implementasi di Django
+    - Autentikasi bisa dilakukan melewati fungsi `authenticate()` dan `login()`
+    - Otorisasi bisa dilakukan melewati `@login_required` atau `@permission_required`
+
+## Kelebihan dan kekurangan session dan cookies 
+- **Session**
+      - Aman karena data disimpan di server
+      - Penyimpanan data lebih besar
+      - Tetapi membebani server jika banyak user
+
+- **Cookies**
+      - Ringan dan tidak membebani server
+      - Disimpan di browser client
+      - Rentan terhadap manipulasi oleh pengguna jika tidak dienkripsi
+
+## Apakah penggunaan cookies aman secara default
+Secara default penggunaan cookies tidak aman, banyak risiko seperti **Cookie Theft** dan **Session Hijacking** yang bisa terjadi. Untuk itu ada beberapa cara menangani hal tersebut, seperti:
+    - `HttpOnly=True` supaya cookie tidak bisa diakses JS.
+    - `SESSION_COOKIE_SECURE=True` supaya cookie dikirim via HTTPS.
+    - `CSRF token` untuk semua POST form.
+    - Session rotation setelah login.
+
+## Cara Implementasi
+1. **Membuat Fungsi dan Form Registrasi**
+   - Menambahkan fungsi `register` pada `views.py`
+   - Membuat file `register.html` pada `main/templates`
+   - Menambahkan url pada `urls.py`
+
+2. **Implementasi fungsi login dan logout**
+   - Menambahkan fungsi `login_user` dan `logout_user` pada `views.py`
+   - Memodifikasi fungsi `show_main` pada `views.py`
+   - Membuat file `login.html` pada `main/templates`
+   - Menambahkan url pada `urls.py`
+   - Menambahkan tombol `logout` dan tulisan last login pada `main.html`
+
+3. **Merestriksi Akses Halaman Main dan Show Product**
+   - Menambahkan `@login_required(login_url='/login')` di atas fungsi `show_main` dan `show_product` pada `views.py`
+
+4. **Menghubungkan Model Product dengan User**
+   - Menambahkan potongan kode pada `models.py`
+   - Memodifikasai function `create_product` dan `show_main` pada `views.py`
+   - Menambahkan tombol My dan All pada `main.html`
+   - Menambahkan seller pada `show_product.html`
