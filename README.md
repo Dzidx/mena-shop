@@ -138,39 +138,39 @@ Asdos sangat membantu dengan masalah-masalah yang terjadi ketika kita mengerjaka
 `AuthenticationForm` adalah form bawaan Django yang digunakan untuk login user.
 
 Kelebihan:
-    - Terintegrasi dengan sistem autentifikasi Django
-    - Otomatis validasi username dan password
-    - Mudah dipakai
+- Terintegrasi dengan sistem autentifikasi Django
+- Otomatis validasi username dan password
+- Mudah dipakai
 
 Kelemahan:
-    - Terbatas sehingga perlu kustomisasi jika ingin login dengan multi-field
-    - Tampilan sederhana, sehingga perlu template override
+- Terbatas sehingga perlu kustomisasi jika ingin login dengan multi-field
+- Tampilan sederhana, sehingga perlu template override
 
 ## Perbedaan autentikasi dan otorisasi, bagaiamana Django mengimplementasikan kedua konsep tersebut
-    - Autentikasi = proses memastikan identitas user (siapa yang login).
-    - Otorisasi = proses memastikan user punya hak untuk melakukan aksi tertentu.
+- Autentikasi = proses memastikan identitas user (siapa yang login).
+- Otorisasi = proses memastikan user punya hak untuk melakukan aksi tertentu.
 
 Implementasi di Django
-    - Autentikasi bisa dilakukan melewati fungsi `authenticate()` dan `login()`
-    - Otorisasi bisa dilakukan melewati `@login_required` atau `@permission_required`
+- Autentikasi bisa dilakukan melewati fungsi `authenticate()` dan `login()`
+- Otorisasi bisa dilakukan melewati `@login_required` atau `@permission_required`
 
 ## Kelebihan dan kekurangan session dan cookies 
 - **Session**
-      - Aman karena data disimpan di server
-      - Penyimpanan data lebih besar
-      - Tetapi membebani server jika banyak user
+  - Aman karena data disimpan di server
+  - Penyimpanan data lebih besar
+  - Tetapi membebani server jika banyak user
 
 - **Cookies**
-      - Ringan dan tidak membebani server
-      - Disimpan di browser client
-      - Rentan terhadap manipulasi oleh pengguna jika tidak dienkripsi
+  - Ringan dan tidak membebani server
+  - Disimpan di browser client
+  - Rentan terhadap manipulasi oleh pengguna jika tidak dienkripsi
 
 ## Apakah penggunaan cookies aman secara default
 Secara default penggunaan cookies tidak aman, banyak risiko seperti **Cookie Theft** dan **Session Hijacking** yang bisa terjadi. Untuk itu ada beberapa cara menangani hal tersebut, seperti:
-    - `HttpOnly=True` supaya cookie tidak bisa diakses JS.
-    - `SESSION_COOKIE_SECURE=True` supaya cookie dikirim via HTTPS.
-    - `CSRF token` untuk semua POST form.
-    - Session rotation setelah login.
+- `HttpOnly=True` supaya cookie tidak bisa diakses JS.
+- `SESSION_COOKIE_SECURE=True` supaya cookie dikirim via HTTPS.
+- `CSRF token` untuk semua POST form.
+- Session rotation setelah login.
 
 ## Cara Implementasi
 1. **Membuat Fungsi dan Form Registrasi**
@@ -193,3 +193,71 @@ Secara default penggunaan cookies tidak aman, banyak risiko seperti **Cookie The
    - Memodifikasai function `create_product` dan `show_main` pada `views.py`
    - Menambahkan tombol My dan All pada `main.html`
    - Menambahkan seller pada `show_product.html`
+
+
+
+---
+# Tugas 5
+
+## Urutan Prioritas Pengambilan CSS Selector
+1. `!important`: Aturan CSS dengan `!important` memiliki prioritas tertinggi dan akan menimpa semua aturan lainnya untuk properti tertentu pada elemen tersebut.
+2. **Sebaris (Inline Styles)**: Diterapkan langsung pada elemen HTML menggunakan atribut `style`.
+3. **ID Selector**: Memiliki prioritas lebih tinggi daripada kelas, pseudo-kelas, dan atribut.
+4. **Kelas, Pseudo-kelas, dan Atribut**: Selector jenis ini memiliki prioritas yang sama, seperti `.class`, `:hover`, dan `[type="text"]`.
+5. **Element/Tag Selector**: Selector paling dasar yang menargetkan jenis elemen HTML tertentu, seperti `div` atau `p`
+
+## Kenapa Website Responsive Penting
+Mengapa website responsisve penting:
+- Pengguna dapat akses website pada device berbeda
+- User experience lebih nyaman
+- SEO friendly (Google memprioritaskan web yang mobile-friendly)
+
+Contoh aplikasi yang menerapkannya:
+- Wikipedia
+- Twitter (X)
+- Tokopedia
+## Perbedaan Antara Margin, Border, dan Padding
+- Margin = ruang luar antar elemen.
+- Border = garis tepi elemen.
+- Padding = ruang dalam antara konten dengan border.
+
+```css
+.example {
+  margin: 10px;              /* ruang antar elemen */
+  border: 1px solid black;   /* garis tepi */
+  padding: 5px;             /* ruang antara konten dan border */
+}
+```
+
+## Konsep Flex Box dan Grid Layout
+- **Flexbox**
+  - Layout fokus ke satu dimensi
+  - Contoh: navbar, daftar produk
+- **Grid Layout**
+  - Layout fokus ke dua dimensi
+  - Contoh: konten utama, footer
+
+## Cara Implementasi
+1. **Menambahkan Fitur Edit Product**
+   - Menambahkan fungsi `edit_product` pada `views.py`
+   - Membuat file `edit_product.html` pada `main/templates`
+   - Menambahkan url pada `urls.py`
+   - Menambahkan tombol Edit pada `main.html`
+
+2. **Menambahkan Fitur Delete Product**
+   - Menambahkan fungsi `delete_product` pada `views.py`
+   - Menambahkan url pada `urls.py`
+   - Menambahkan tombol Delete pada `main.html`
+     
+3. **Menambahkan Navigation Bar**
+   - Membuat file `navbar.html` pada `templates`
+   - Menambahkan `{% include 'navbar.html' %}` pada `main.html`
+
+4. **KOnfigurasi Static**
+   - Memodifikasi `settings.py`
+
+5. **Mendesign dengan Tailwind**
+   - Menambahkan Tailwind ke aplikasi pada `base.html`
+   - Membuat folder abru bernama `static` dan folder baru di dalamnya bernama `css`, membuat file baru bernama `global.css`
+   - Menghubungkan `global.css` dan Tailwind di `base.html`
+   - Styling setiap file pada `main/templates` serta `navbar.html`
