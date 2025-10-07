@@ -261,3 +261,37 @@ Contoh aplikasi yang menerapkannya:
    - Membuat folder abru bernama `static` dan folder baru di dalamnya bernama `css`, membuat file baru bernama `global.css`
    - Menghubungkan `global.css` dan Tailwind di `base.html`
    - Styling setiap file pada `main/templates` serta `navbar.html`
+
+
+
+---
+# Tugas 6
+
+## Perbedaan Synchronous Request dan Asynchronous Request
+- **Synchronous:**
+  - Browser menunggu server setelah request dikirim. Hal ini membuat halaman tidak bisa diakses untuk sementara
+- **Asynchronous:**
+  - Browser mengirim request ke server di background, sehingga tidak perlu memblokir akses ke halaman
+
+## Bagaimana AJAX Bekerja di Django 
+1. User melakukan request
+2. JavaScript mengirim request ke URL Django
+3. Django memproses data lalu mengirim kembali hasilnya
+4. JavaScript menerima hasil lalu men-update tampilan dengan DOM
+
+## Keuntungan Menggunakan AJAX Dibandingkan Render Biasa di Django
+- Lebih cepat dikarenakan tidak perlu reload halaman tiap request
+- Lebih interaktif
+- Bisa menggunakan fitur real-time (live-chat, dll.)
+
+## Cara Memastikan Keamanan Saat Menggunakan AJAX untuk Login dan Register
+- Gunakan **CSRF Token** pada setiap request
+- Gunakan **HTTPS** supaya data login di-enskripsi
+- Batasi **response** data agar tidak tersebar informasi sensitif
+- Validasi input di **server-side**
+
+## Bagaimana AJAX Mempengaruhi Pengalaman Pengguna
+- User merasa web lebih responsif
+- Tampilan lebih interaktif
+- Interaksi seamless
+- Bisa memberikan feedback instant
